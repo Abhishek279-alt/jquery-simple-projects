@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accordion using JQuery</title>
+</head>
+<style>
+  body {
+    background-color: rgba(211, 123, 55, 0.932);
+  }
+
+  .acc-container {
+    border: 1px solid black;
+    width: 40%;
+    margin: 10% auto;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.601);
+  }
+
+  @media (max-width:992px) {
+    .acc-container {
+      width: 60%;
+    }
+  }
+
+  @media (max-width:768px) {
+    .acc-container {
+      width: 70%;
+    }
+  }
+
+  @media (max-width:576px) {
+    .acc-container {
+      width: 90%;
+    }
+  }
+
+  .acc-header {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.8vw;
+    padding: 2% 3%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-bottom: 1px solid rgba(211, 123, 55, 0.932);
+  }
+
+  .acc-text {
+    background-color: black;
+    color: rgb(230, 139, 69);
+    font-size: 1.1vw;
+    padding: 5% 3%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: none;
+  }
+
+  .toggle {
+    cursor: pointer;
+  }
+
+  .rotate-45 {
+    transform: rotate(45deg);
+  }
+
+  .rotate-0 {
+    transform: rotate(0deg);
+  }
+</style>
+
+<body>
+  <div class="acc-container">
+    <div class="box" id="box-1">
+      <div class="acc-header" id="header-1"><span>This is heading 1</span><span class="toggle" id="toggle-1">+</span>
+      </div>
+      <div id="text-field-1" class="acc-text">This is text field 1. Lorem ipsum dolor, sit amet consectetur adipisicing
+        elit. Consequatur
+        sit accusantium magni cumque odio amet?</div>
+    </div>
+    <div class="box" id="box-2">
+      <div class="acc-header" id="header-2"><span>This is heading 2</span><span class="toggle" id="toggle-2">+</span>
+      </div>
+      <div id="text-field-2" class="acc-text">This is text field 2. Lorem ipsum dolor, sit amet consectetur adipisicing
+        elit. Consequatur
+        sit accusantium magni cumque odio amet?</div>
+    </div>
+    <div class="box" id="box-3">
+      <div class="acc-header" id="header-3" style="border-bottom: none;"><span>This is heading 3</span><span
+          class="toggle" id="toggle-3">+</span>
+      </div>
+      <div id="text-field-3" class="acc-text" style="border-top: 1px solid rgba(211, 123, 55, 0.932)">This is text
+        field 3. Lorem ipsum dolor, sit amet consectetur adipisicing
+        elit. Consequatur
+        sit accusantium magni cumque odio amet?</div>
+    </div>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    console.log("You are now tuned into JQuery")
+    $(".box").each(function (index) {
+      $(`#toggle-${index + 1}`).click(function () {
+        $(`#text-field-${index + 1}`).slideToggle()
+        if (document.getElementById(`toggle-${index + 1}`).style.transform == "rotate(45deg)") {
+          $(`#toggle-${index + 1}`).css({
+            transition: "all 0.2s ease",
+            transform: "rotate(0deg)"
+          })
+        } else {
+          $(`#toggle-${index + 1}`).css({
+            transition: "all 0.2s ease",
+            transform: "rotate(45deg)"
+          })
+        }
+
+      })
+    })
+  })
+</script>
+
+</html>
