@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar One</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: blueviolet;
+    background-image: linear-gradient(180deg, tomato, blueviolet);
+    background-repeat: no-repeat;
+    height: 600px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .navbar {
+    background-color: rgb(40, 40, 40);
+    padding: 1% 0.8%;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+
+  .navbar h3 {
+    color: whitesmoke;
+    font-weight: bold;
+  }
+
+  #collapse {
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  #collapse:hover {
+    transform: scale(1.2);
+  }
+
+  .panel-container {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.218);
+    overflow-y: hidden;
+    display: none;
+  }
+
+  .nav-panel {
+    background-color: rgba(40, 40, 40, 0.979);
+    height: 95.5vh;
+    width: 30%;
+    padding: 1rem 1rem;
+    position: absolute;
+    top: 0;
+    right: -150vw;
+    z-index: 3;
+    overflow-y: hidden;
+  }
+
+  .nav-panel ul {
+    list-style-type: none;
+    padding-top: 4%;
+  }
+
+  .nav-panel ul li {
+    border-bottom: 2px solid rgb(77, 77, 77);
+    padding: 2rem 1rem;
+  }
+
+  .nav-panel ul li a {
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 1.2rem;
+  }
+
+  .nav-panel ul li a:hover {
+    color: color-mix(in srgb, tomato 60%, blueviolet 40%);
+  }
+
+  #close {
+    color: whitesmoke;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    float: right;
+  }
+
+  #close:hover {
+    color: color-mix(in srgb, tomato 60%, blueviolet 40%);
+  }
+
+  @media (max-width:576px) {
+    .nav-panel {
+      width: 100%;
+    }
+
+    .nav-panel ul li {
+      text-align: center;
+    }
+  }
+</style>
+
+<body>
+  <div class="navbar">
+    <h3 style="cursor: pointer;">Navbar</h3>
+    <h3 id="collapse">&#x26AA;</h3>
+  </div>
+  <div class="panel-container">
+  </div>
+  <div class="nav-panel">
+    <button id="close">X</button>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#collapse").click(function () {
+      $(".panel-container").css("display", "block")
+      $(".nav-panel").fadeIn(100)
+      $(".nav-panel").animate({ right: "0" }, 200)
+    })
+    $("#close").click(function () {
+      $(".panel-container").css("display", "none")
+      $(".nav-panel").animate({ right: "-150vw" }, 300)
+    })
+  })
+</script>
+
+</html>
