@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modal using JQuery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="main">
+    <button id="open">Open Modal</button>
+  </div>
+  <div class="modal-wrapper">
+    <div class="container">
+      <div class="nav">
+        <h4 id="modal-close">X</h4>
+      </div>
+      <hr>
+      <div class="modal-body">
+        <h3>Hello, I am a modal</h3>
+        <p>This modal is created by Abhishek. Visit my github profile - <a href="https://github.com/Abhishek279-alt/"
+            target="_blank">here</a>.</p>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  $(document).ready(function () {
+    $("#open").click(function () {
+      $(".modal-wrapper").css("display", "block")
+      $(".main").css("display", "none")
+    })
+    $("#modal-close").click(function () {
+      $(".main").css("display", "block")
+      $(".modal-wrapper").css("display", "none")
+    })
+  })
+</script>
+
+</html>
